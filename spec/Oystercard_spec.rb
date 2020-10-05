@@ -20,21 +20,24 @@ describe Oystercard do
   end
 
   describe '#deduct' do
-    it 'can be reduced' do
+    before do
       new_card.top_up(30)
+    end
+    
+    it 'can be reduced' do
       new_card.deduct(20)
       expect(new_card.balance).to eq(10)
     end
+
+    # it 'cannot deduce when out of money' do
+    #   expect { new_card.deduct(40) }.to raise_error("Insufficient balance")
+    # end
+
   end
 
-  describe '#journey' do
-    it 'status of passanger is false by default' do
+  describe '#in_journey?' do
+    it 'status of journey is false by default' do
       expect(new_card.in_journey?).to eq(false)
-    end
-
-    it 'touch in changes in_journey to true' do
-      new_card.touch_in
-      expect(new_card.in_journey?).to eq(true)
     end
 
     it 'touch out changes in_journey to false' do
@@ -42,6 +45,17 @@ describe Oystercard do
       expect(new_card.in_journey?).to eq(false)
     end
 
+  end
+
+  describe '#touch_in' do
+    it 'changes in_journey to true' do
+      new_card.touch_in
+      expect(new_card.in_journey?).to eq(true)
+    end
+
+    it 'raises error if insufficient balance' do
+      expect { new_card.touch_in }.to raise_error("Insufficient balance")
+    end
   end
 
 end

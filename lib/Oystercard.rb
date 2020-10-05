@@ -1,5 +1,6 @@
 class Oystercard
   CARD_LIMIT = 90
+  FARE_PRICE = 1
 
   attr_reader :balance, :in_journey
 
@@ -22,6 +23,7 @@ class Oystercard
   end
 
   def touch_in
+    raise "Insufficient balance" if @balance < FARE_PRICE
     @in_journey = true
   end
 
