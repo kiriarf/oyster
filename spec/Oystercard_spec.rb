@@ -31,6 +31,17 @@ describe Oystercard do
     it 'status of passanger is false by default' do
       expect(new_card.in_journey?).to eq(false)
     end
+
+    it 'touch in changes in_journey to true' do
+      new_card.touch_in
+      expect(new_card.in_journey?).to eq(true)
+    end
+
+    it 'touch out changes in_journey to false' do
+      new_card.touch_out
+      expect(new_card.in_journey?).to eq(false)
+    end
+
   end
 
 end
