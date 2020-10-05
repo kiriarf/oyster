@@ -11,4 +11,9 @@ class Oystercard
     raise "Maximum balance is #{CARD_LIMIT}" if @balance + amount > CARD_LIMIT
     @balance += amount
   end
+
+  def deduct(amount)
+    @balance -= amount
+  end
+
 end

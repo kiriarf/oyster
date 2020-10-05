@@ -18,4 +18,15 @@ describe Oystercard do
     end
 
   end
+
+  describe 'deduct' do
+    it 'can be reduced' do
+      new_card.top_up(30)
+      new_card.deduct(20)
+      expect(new_card.balance).to eq(10)
+    end
+  end
+
+
+
 end
