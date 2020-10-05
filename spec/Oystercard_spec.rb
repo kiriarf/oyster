@@ -19,7 +19,7 @@ describe Oystercard do
 
   end
 
-  describe 'deduct' do
+  describe '#deduct' do
     it 'can be reduced' do
       new_card.top_up(30)
       new_card.deduct(20)
@@ -27,6 +27,10 @@ describe Oystercard do
     end
   end
 
-
+  describe '#journey' do
+    it 'status of passanger is false by default' do
+      expect(new_card.in_journey?).to eq(false)
+    end
+  end
 
 end
