@@ -2,7 +2,7 @@ require 'Oystercard'
 
 describe Oystercard do
 
-  let(:new_card) {Oystercard.new}
+  let(:new_card) { Oystercard.new }
 
   it 'expects card balance to be 0' do
     expect(new_card.balance).to eq(0)
@@ -49,6 +49,7 @@ describe Oystercard do
 
   describe '#touch_in' do
     it 'changes in_journey to true' do
+      new_card.top_up(10)
       new_card.touch_in
       expect(new_card.in_journey?).to eq(true)
     end
