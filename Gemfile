@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
-ruby '2.7.0'
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-group :test do
+# gem "rails"
+ 
+ruby '2.7.1'
+
+group :development, :test do 
   gem 'rspec'
 end
-
-group :development do
-  gem 'rspec'
-end 
